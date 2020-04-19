@@ -1,5 +1,6 @@
 package com.pranav.infosystest.data.network
 
+import com.pranav.infosystest.util.ApiException
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
@@ -23,7 +24,7 @@ abstract class SafeApiRequest {
             }
             message.append("Error code: ${response.code()}")
 
-
+            throw  ApiException(message.toString())
         }
     }
 }

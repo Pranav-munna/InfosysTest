@@ -1,23 +1,28 @@
 package com.pranav.infosystest.data.network
 
-import com.pranav.infosystest.data.network.responses.NewsResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
+import com.pranav.infosystest.data.network.responses.QuotesResponse
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 
 interface MyApi {
 
-     @GET("facts")
-   suspend fun allNewsList(
-    ): Response<NewsResponse>
+    @GET("facts")
+    suspend fun getQuotes(
+    ): Response<QuotesResponse>
 
-    companion object{
-        operator fun invoke():MyApi{
-            return  Retrofit.Builder()
+    companion object {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ): MyApi {
+            val okHttpclient = OkHttpClient.Builder()
+                .addNetworkInterceptor(networkConnectionInterceptor)
+                .build()
+
+            return Retrofit.Builder()
+                .client(okHttpclient)
                 .baseUrl("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

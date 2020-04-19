@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="quote"
+            type="com.pranav.infosystest.data.db.entities.Quote" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_tint"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/quoteTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{quote.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/colorPrimary"
+                tools:text="Beavers" />
+
+            <TextView
+                android:id="@+id/quoteDetails"
+                android:layout_below="@id/quoteTitle"
+                android:layout_toStartOf="@+id/imageView"
+                android:layout_toLeftOf="@+id/imageView"
+                android:text="@{quote.description}"
+                tools:text="Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"
+                style="@style/textViewStyle" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_below="@id/quoteTitle"
+                app:imageHref="@{quote.imageHref}"
+                style="@style/imageStyle" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

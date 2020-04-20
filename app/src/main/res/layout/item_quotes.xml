@@ -43,6 +43,7 @@
                 android:id="@+id/imageView"
                 android:layout_below="@id/quoteTitle"
                 app:imageHref="@{quote.imageHref}"
+                android:src="@drawable/img"
                 style="@style/imageStyle" />
 
         </RelativeLayout>

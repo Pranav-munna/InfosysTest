@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="quote"
             type="com.pranav.infosystest.data.db.entities.Quote" />
@@ -19,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_tint"
-            android:padding="12dp">
+            android:padding="12dp"
+            android:visibility="@{quote.getNull ? View.GONE : View.VISIBLE}">
 
             <TextView
                 android:id="@+id/quoteTitle"
@@ -32,19 +35,20 @@
 
             <TextView
                 android:id="@+id/quoteDetails"
+                style="@style/textViewStyle"
                 android:layout_below="@id/quoteTitle"
                 android:layout_toStartOf="@+id/imageView"
                 android:layout_toLeftOf="@+id/imageView"
                 android:text="@{quote.description}"
-                tools:text="Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"
-                style="@style/textViewStyle" />
+                tools:text="Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony" />
 
             <ImageView
                 android:id="@+id/imageView"
+                style="@style/imageStyle"
                 android:layout_below="@id/quoteTitle"
-                app:imageHref="@{quote.imageHref}"
-                android:src="@drawable/img"
-                style="@style/imageStyle" />
+                android:background="?android:attr/selectableItemBackground"
+                android:visibility="@{quote.imageHref == null ? View.GONE : View.VISIBLE}"
+                app:imageHref="@{quote.imageHref}" />
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

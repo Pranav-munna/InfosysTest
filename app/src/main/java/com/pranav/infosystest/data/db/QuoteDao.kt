@@ -13,6 +13,9 @@ interface QuoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllQuotes(quotes: List<Quote>)
 
+    @Query("DELETE FROM Quote")
+    fun deleteTable()
+
     @Query("SELECT * FROM Quote")
     fun getQuotes(): LiveData<List<Quote>>
 }

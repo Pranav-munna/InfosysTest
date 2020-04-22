@@ -8,7 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 @BindingAdapter("imageHref")
 fun loadImage(view: ImageView, url: String?) {
-    Glide.with(view)
+    Glide.with(view.context)
         .load(url)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(view)

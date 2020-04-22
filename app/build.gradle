@@ -48,8 +48,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     debugImplementation "androidx.fragment:fragment-testing:1.3.0-alpha03"
 
+    //for unit test
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'net.javacrumbs.json-unit:json-unit-fluent:1.5.6'
 
     //Retrofit and GSON
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
